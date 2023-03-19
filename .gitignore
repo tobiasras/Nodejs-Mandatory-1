@@ -106,4 +106,4 @@ dist
 
 # code editors
 .idea
-public/dev
+/dev

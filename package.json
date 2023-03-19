@@ -10,7 +10,8 @@
     "tailwind": "npx tailwindcss -i ./input.css -o ./public/styling/main.css --watch\n"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "showdown": "^2.1.0"
   },
   "repository": {
     "type": "git",
