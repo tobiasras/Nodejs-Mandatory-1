@@ -5,20 +5,25 @@ const header = fs.readFileSync('./public/components/header/header.html').toStrin
 
 function twoColumnMain (config) {
   const mainTemplate = fs.readFileSync('./public/components/main/twoColumn.html').toString()
-  let article
-  let aside
+  let article = fs.readFileSync('./public/components/article/article.html').toString()
+  let aside = fs.readFileSync('./public/components/aside/aside.html').toString()
 
-  if (config.articlePath) {
-    article = fs.readFileSync('./public/components/article/article.html').toString()
+  let articleContent
+  if (config.articleContentPath) {
+    articleContent = fs.readFileSync(config.articleContentPath).toString()
   } else {
-    article = config.article
+    const wrapper = fs.readFileSync('./public/components/wrapper/noteWrapper.html').toString()
+    articleContent = wrapper.replace('$CONTENT', config.articleContent)
   }
+  article = article.replace('$CONTENT', articleContent)
 
-  if (config.asidePath) {
-    aside = fs.readFileSync('./public/components/aside/aside.html').toString()
+  let asideContent
+  if (config.asideContentPath) {
+    asideContent = fs.readFileSync(config.asideContentPath).toString()
   } else {
-    article = config.aside
+    asideContent = config.asideContent
   }
+  aside = aside.replace('$CONTENT', asideContent)
 
   const main = mainTemplate
     .replace('$ASIDE', aside)

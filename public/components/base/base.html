@@ -6,17 +6,60 @@
 
     <!-- ONLY FOR DEVELOPMENT -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            article h1 {
+                @apply mb-4 text-6xl w-9/12 font-extrabold text-transparent bg-clip-text bg-gradient-to-r to-cyan-300 from-cyan-800
+            }
+
+            article h2 {
+                @apply text-4xl font-bold mt-4
+            }
+
+            article h3 {
+               @apply text-3xl font-bold mt-4
+            }
+
+            article ul {
+                @apply max-w-md space-y-1 list-inside list-disc
+            }
+
+            article ol {
+                @apply max-w-md space-y-1 list-decimal list-inside
+            }
+
+            article li ol {
+                @apply pl-5 mt-1 space-y-1 list-decimal list-inside
+            }
+
+            article li ul {
+                @apply pl-5  space-y-1 list-disc list-inside
+            }
+
+            article pre {
+                @apply p-4 my-4 bg-gray-100
+            }
+
+            article code {
+                @apply font-mono font-bold
+            }
+
+
+        }
+    </style>
 </head>
 
-<body class="flex flex-col h-screen">
 
-    $HEADER
+<body class="flex flex-col h-screen bg-gray-200">
 
-
-    $MAIN
+$HEADER
 
 
-    $SCRIPTS
+$MAIN
+
+
+$SCRIPTS
 
 </body>
 

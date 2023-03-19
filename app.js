@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/notes', (req, res) => {
-  res.send(pages.notes)
+  res.send(pages.admin)
 })
 
 app.listen(8080, (error) => {

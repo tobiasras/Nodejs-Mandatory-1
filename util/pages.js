@@ -1,4 +1,5 @@
 import { createPage } from './templateEngine.js'
+import { html } from './notes.js'
 
 const title = 'Nodejs notes'
 
@@ -10,9 +11,15 @@ pages.frontpage = createPage(title, {
 })
 
 pages.notes = createPage(title + ' | notes', {
+  type: 'notes'
+
+})
+
+pages.admin = createPage(title + ' | notes', {
   type: 'notes',
-  articlePath: './public/components/article/article.html',
-  asidePath: './public/components/aside/aside.html'
+  articleContent: html,
+  asideContent: '<h1>Hello</h1>'
+
 })
 
 export default pages

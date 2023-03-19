@@ -107,3 +107,4 @@ dist
 # code editors
 .idea
 /dev
+.obsidian
