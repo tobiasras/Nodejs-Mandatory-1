@@ -12,7 +12,6 @@ pages.frontpage = createPage(title, {
 
 pages.notes = createPage(title + ' | notes', {
   type: 'notes'
-
 })
 
 pages.admin = createPage(title + ' | notes', {

@@ -5,7 +5,7 @@ const header = fs.readFileSync('./public/components/header/header.html').toStrin
 
 function twoColumnMain (config) {
   const mainTemplate = fs.readFileSync('./public/components/main/twoColumn.html').toString()
-  let article = fs.readFileSync('./public/components/article/article.html').toString()
+  let article = fs.readFileSync('./public/components/article/articleTwoColumn.html').toString()
   let aside = fs.readFileSync('./public/components/aside/aside.html').toString()
 
   let articleContent
@@ -37,7 +37,7 @@ function oneColumnMain (config) {
   let article
 
   if (config.articlePath) {
-    article = fs.readFileSync('./public/components/article/article.html').toString()
+    article = fs.readFileSync('./public/components/article/articleOneColumn.html').toString()
   } else {
     article = config.article
   }
