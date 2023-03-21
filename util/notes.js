@@ -1,10 +1,44 @@
-import showdown from 'showdown'
 import fs from 'fs'
+import path from 'path'
 
-const converter = new showdown.Converter({
-  noHeaderId: true
-})
+export const getAllFiles = (dirPath, level, dirName = 'notes') => {
+  const files = []
+  level++
 
-const note = fs.readFileSync('./notes/FirstNote.md').toString()
+  fs.readdirSync(dirPath).forEach(file => {
+    const newPath = dirPath + '/' + file
+    const metaInfo = fs.statSync(newPath)
 
-export const html = converter.makeHtml(note)
+    if (metaInfo.isDirectory()) {
+      files.push(getAllFiles(newPath, level, file))
+    } else {
+      if (path.extname(newPath) === '.md') {
+        files.push({
+          dirName,
+          depth: level,
+          name: file,
+          path: newPath
+        })
+      }
+    }
+  })
+  return files
+}
+
+function readNestedNotes (nestedNotes) {
+  const notes = []
+  nestedNotes.forEach(item => {
+    if (Array.isArray(item)) {
+      notes.push(...readNestedNotes(item))
+    } else {
+      notes.push(item)
+    }
+  })
+
+  return notes
+}
+
+export function getNotes () {
+  const noteDirectory = getAllFiles('./public/notes', 0)
+  return readNestedNotes(noteDirectory)
+}

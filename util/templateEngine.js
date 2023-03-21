@@ -1,4 +1,5 @@
 import fs from 'fs'
+import cleanLink from './links.js'
 
 const template = fs.readFileSync('./public/components/base/base.html').toString()
 const header = fs.readFileSync('./public/components/header/header.html').toString()
@@ -61,11 +62,47 @@ export function createPage (tabTitle, config = {}) {
       break
   }
 
-  const page = template
+  return template
     .replace('$HEADER', header)
     .replace('$MAIN', main)
     .replace('$SCRIPTS', config.scripts || '')
     .replace('$TAB_TITLE', tabTitle)
+}
 
-  return page
+export function createNavAside (notes) {
+  const aside = fs.readFileSync('./public/components/aside/aside.html').toString()
+
+  const noteLink = fs.readFileSync('./public/components/aside/link/link.html').toString()
+  const folder = fs.readFileSync('./public/components/aside/link/folder.html').toString()
+
+  let html = ''
+  const linkTree = (notes) => {
+    notes.forEach((note, index) => {
+      if (Array.isArray(note)) {
+        linkTree(note)
+      } else {
+        if (index === 0) {
+          const folderHtml = folder
+            .replace('$TEXT', note.dirName)
+            .replace('$PADDING', `pl-${1 + 3 * note.depth}`)
+
+          html += folderHtml
+        }
+
+        const notePath = note.path
+          .substring(0, note.path.lastIndexOf('.'))
+          .replace('./public', '')
+
+        const linkHtml = noteLink
+          .replace('$TEXT', note.name)
+          .replace('$HREF', cleanLink(notePath))
+          .replace('$PADDING', `pl-${1 + 5 * note.depth}`)
+
+        html += linkHtml
+      }
+    })
+  }
+  linkTree(notes)
+
+  return aside.replace('$CONTENT', html)
 }
