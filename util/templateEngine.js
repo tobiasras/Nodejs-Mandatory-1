@@ -16,7 +16,9 @@ function twoColumnMain (config) {
     const wrapper = fs.readFileSync('./public/components/wrapper/noteWrapper.html').toString()
     articleContent = wrapper.replace('$CONTENT', config.articleContent)
   }
-  article = article.replace('$CONTENT', articleContent)
+  article = article
+    .replace('$CONTENT', articleContent)
+    .replace('$TITLE', config.name)
 
   let asideContent
   if (config.asideContentPath) {
@@ -70,8 +72,6 @@ export function createPage (tabTitle, config = {}) {
 }
 
 export function createNavAside (notes) {
-  const aside = fs.readFileSync('./public/components/aside/aside.html').toString()
-
   const noteLink = fs.readFileSync('./public/components/aside/link/link.html').toString()
   const folder = fs.readFileSync('./public/components/aside/link/folder.html').toString()
 
@@ -84,19 +84,21 @@ export function createNavAside (notes) {
         if (index === 0) {
           const folderHtml = folder
             .replace('$TEXT', note.dirName)
-            .replace('$PADDING', `pl-${1 + 3 * note.depth}`)
+            .replace('$PADDING', 'pl-1')// `pl-${1 + 2 * note.depth}`
 
           html += folderHtml
         }
+
+        const name = note.name.substring(0, note.name.lastIndexOf('.'))
 
         const notePath = note.path
           .substring(0, note.path.lastIndexOf('.'))
           .replace('./public', '')
 
         const linkHtml = noteLink
-          .replace('$TEXT', note.name)
+          .replace('$TEXT', name)
           .replace('$HREF', cleanLink(notePath))
-          .replace('$PADDING', `pl-${1 + 5 * note.depth}`)
+          .replace('$PADDING', 'pl-3') // `pl-${1 + 4 * note.depth}`
 
         html += linkHtml
       }
@@ -104,5 +106,5 @@ export function createNavAside (notes) {
   }
   linkTree(notes)
 
-  return aside.replace('$CONTENT', html)
+  return html
 }

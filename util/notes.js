@@ -8,8 +8,8 @@ export const getAllFiles = (dirPath, level, dirName = 'notes') => {
   fs.readdirSync(dirPath).forEach(file => {
     const newPath = dirPath + '/' + file
     const metaInfo = fs.statSync(newPath)
-
     if (metaInfo.isDirectory()) {
+      file = file.substring(file.indexOf('.') + 1, file.length)
       files.push(getAllFiles(newPath, level, file))
     } else {
       if (path.extname(newPath) === '.md') {
@@ -22,6 +22,7 @@ export const getAllFiles = (dirPath, level, dirName = 'notes') => {
       }
     }
   })
+  // reverse makes folder go last instead of first
   return files
 }
 

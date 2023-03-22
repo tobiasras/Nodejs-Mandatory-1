@@ -19,15 +19,20 @@ pages.notes = createPage(title + ' | notes', {
 export const notes = () => {
   const navSideHtml = createNavAside(getAllFiles('./public/notes', 0))
 
-  const allnotes = getNotes().map(note => {
+  const allNotes = getNotes().map(note => {
     let url = note.path.replace('./public', '')
     url = url.substring(0, url.lastIndexOf('.'))
     url = cleanLink(url)
 
+    const nameOfNote = note.name.substring(0, note.name.lastIndexOf('.'))
+    const goToText = `${note.dirName} / ${nameOfNote}`
+
     const html = createPage(`${title} | ${note.name}`, {
       type: 'notes',
       articleContent: mdPathtoHtml(note.path),
-      asideContent: navSideHtml
+      asideContent: navSideHtml,
+      name: goToText
+
     })
 
     return {
@@ -37,16 +42,17 @@ export const notes = () => {
   })
 
   // First notes page
-  allnotes.push({
+  allNotes.push({
     url: '/notes',
     html: createPage(title + ' | notes', {
       type: 'notes',
       articleContentPath: './public/components/article/notes.html',
-      asideContent: navSideHtml
+      asideContent: navSideHtml,
+      name: 'Node.js documentation'
     })
   })
 
-  return allnotes
+  return allNotes
 }
 
 export default pages

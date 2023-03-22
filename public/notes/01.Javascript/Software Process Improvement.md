@@ -1,4 +1,6 @@
-#### **SPI implies that:**
+# Software process improvements
+
+### **SPI implies that:**
 * Elements of an effective software process can be defined in an effective manner.
 * An existing organizational approach to software development can be assessed against those elements, and
 * A meaningful strategy for improvement can be defined.
