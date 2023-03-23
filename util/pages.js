@@ -20,8 +20,10 @@ export const notes = () => {
   const navSideHtml = createNavAside(getAllFiles('./public/notes', 0))
 
   const allNotes = getNotes().map(note => {
-    let url = note.path.replace('./public', '')
-    url = url.substring(0, url.lastIndexOf('.'))
+    let url = note.path
+      .replace('./public', '')
+      .replace(/\d\d\./i, '') // removes -> 02.
+    url = url.substring(0, url.lastIndexOf('.')) // removes .md
     url = cleanLink(url)
 
     const nameOfNote = note.name.substring(0, note.name.lastIndexOf('.'))

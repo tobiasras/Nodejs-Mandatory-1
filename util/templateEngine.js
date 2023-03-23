@@ -97,7 +97,7 @@ export function createNavAside (notes) {
 
         const linkHtml = noteLink
           .replace('$TEXT', name)
-          .replace('$HREF', cleanLink(notePath))
+          .replace('$HREF', cleanLink(notePath).replace(/\d\d\./i, ''))
           .replace('$PADDING', 'pl-3') // `pl-${1 + 4 * note.depth}`
 
         html += linkHtml

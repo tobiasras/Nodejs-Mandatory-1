@@ -3,6 +3,8 @@ import fs from 'fs'
 import detectLang from 'lang-detector'
 import Prism from 'prismjs'
 
+import 'prismjs/components/prism-java.js'
+
 const converter = new showdown.Converter({
   noHeaderId: true
 })
@@ -24,12 +26,17 @@ function syntaxHighlighting (htmlDocument) {
   if (codeEx) {
     codeEx.forEach(code => {
       const insideTags = code.replace(/<\/?pre>|<\/?code.*?>/g, '')
-
       const language = detectLang(insideTags).toLowerCase()
 
       if (language !== 'unknown') {
         const highlightCode = Prism.highlight(insideTags, Prism.languages[language], language)
-        htmlDocument = htmlDocument.replace(insideTags, highlightCode)
+
+        try {
+          htmlDocument = htmlDocument.replace(insideTags, highlightCode)
+        } catch (e) {
+          console.log(language + ': is not supported for this application')
+          console.log(e)
+        }
       }
     })
   }
