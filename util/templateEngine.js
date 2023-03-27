@@ -40,7 +40,7 @@ function oneColumnMain (config) {
   let article
 
   if (config.articlePath) {
-    article = fs.readFileSync('./public/components/article/articleOneColumn.html').toString()
+    article = fs.readFileSync(config.articlePath).toString()
   } else {
     article = config.article
   }

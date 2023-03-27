@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+
+    header {
+        height: 4em;
+    }
+
+    main {
+        height: calc(100vh - 5em);
+    }
+
+{
+    height: calc(100vh - 3em)
+}
+
+    article p {
+        @apply mt-3
+    }
+
+    article h1 {
+        @apply mb-4 text-4xl font-extrabold text-cyan-900
+    }
+
+    article h2 {
+        @apply text-2xl font-bold mt-4
+    }
+
+    article h3 {
+        @apply text-xl font-bold mt-4
+    }
+
+    article ul {
+        @apply w-full space-y-1 list-inside list-disc mt-3
+    }
+
+    article ol {
+        @apply w-full space-y-1 list-decimal list-inside mt-3
+    }
+
+    article li ol {
+        @apply pl-5 mt-1 space-y-1 list-decimal list-inside
+    }
+
+    article li ul {
+        @apply pl-5  space-y-1 list-disc list-inside
+    }
+
+    article pre {
+        @apply p-4 my-4 bg-gray-100
+    }
+
+    article code {
+        @apply font-mono font-bold
+    }
+}

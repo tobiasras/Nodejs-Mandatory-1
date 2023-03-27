@@ -20,6 +20,6 @@ app.listen(8080, (error) => {
   if (error) {
     console.log(error)
   } else {
-    console.log('server is running')
+    console.log('__ server is running __')
   }
 })

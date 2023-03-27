@@ -9,7 +9,7 @@ const title = 'note.js'
 
 pages.frontpage = createPage(title, {
   type: 'frontpage',
-  articlePath: './public/components/article/article.html'
+  articlePath: './public/components/article/frontpageArticle.html'
 })
 
 pages.notes = createPage(title + ' | notes', {
