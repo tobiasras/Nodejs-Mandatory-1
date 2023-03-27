@@ -40,13 +40,11 @@ function createRootNotePage (title, aside, url) {
   // CREATES THE FIRST NOTE PAGE
   // TODO CREATE CONTENT TABLE FOR ALL NOTES ON THIS PAGE
   const content = fs.readFileSync('./public/html/pages/notes/article/content/noteIntro.html').toString()
-  const article = fs.readFileSync('./public/html/pages/notes/article/noteArticleTemplate.html').toString()
-    .replace('$CONTENT', content)
 
   let main = fs.readFileSync('./public/html/pages/notes/main/noteMainTemplate.html').toString()
   main = main
     .replace('$ASIDE', aside)
-    .replace('$ARTICLE', article)
+    .replace('$ARTICLE', content)
 
   return {
     url,
