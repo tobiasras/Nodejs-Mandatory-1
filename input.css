@@ -4,17 +4,11 @@
 
 @layer utilities {
 
+    /* MARKDOWN FORMATS START */
+
     header {
         height: 4em;
     }
-
-    main {
-        height: calc(100vh - 5em);
-    }
-
-{
-    height: calc(100vh - 3em)
-}
 
     article p {
         @apply mt-3
@@ -55,4 +49,7 @@
     article code {
         @apply font-mono font-bold
     }
+
+    /* MARKDOWN FORMATS END */
+
 }
