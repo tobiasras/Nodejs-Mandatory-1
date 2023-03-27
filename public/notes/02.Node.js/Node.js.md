@@ -1,1 +1,0 @@
-Node.js is a server envoirment that enables javscript code to be run outside of a browser. it is often used to create backend webservices like REST api's and server side rendered webapps. 

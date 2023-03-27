@@ -11,7 +11,7 @@
     }
 
     article p {
-        @apply mt-3
+        @apply mt-4 pb-1
     }
 
     article h1 {
@@ -43,7 +43,7 @@
     }
 
     article pre {
-        @apply p-4 my-4 bg-gray-100
+        @apply p-4 mb-2 bg-gray-100
     }
 
     article code {

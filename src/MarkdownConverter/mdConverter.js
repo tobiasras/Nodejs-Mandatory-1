@@ -2,14 +2,13 @@ import showdown from 'showdown'
 import fs from 'fs'
 import detectLang from 'lang-detector'
 import Prism from 'prismjs'
-
 import 'prismjs/components/prism-java.js'
 
 const converter = new showdown.Converter({
   noHeaderId: true
 })
 
-export function mdPathtoHtml (path) {
+export function getNoteHtml (path) {
   const note = fs.readFileSync(path).toString()
   let html = converter.makeHtml(note)
 
@@ -29,13 +28,11 @@ function syntaxHighlighting (htmlDocument) {
       const language = detectLang(insideTags).toLowerCase()
 
       if (language !== 'unknown') {
-        const highlightCode = Prism.highlight(insideTags, Prism.languages[language], language)
-
         try {
+          const highlightCode = Prism.highlight(insideTags, Prism.languages[language], language)
           htmlDocument = htmlDocument.replace(insideTags, highlightCode)
-        } catch (e) {
-          console.log(language + ': is not supported for this application')
-          console.log(e)
+        } catch (Error) {
+          console.log(language + ': is not supported for this application \n' + 'code: ' + insideTags)
         }
       }
     })
