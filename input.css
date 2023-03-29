@@ -6,12 +6,8 @@
 
     /* MARKDOWN FORMATS START */
 
-    header {
-        height: 4em;
-    }
-
     article p {
-        @apply mt-4 pb-1
+        @apply pb-1
     }
 
     article h1 {
@@ -24,6 +20,10 @@
 
     article h3 {
         @apply text-xl font-bold mt-4
+    }
+
+    article h4 {
+        @apply pt-3 font-bold
     }
 
     article ul {
@@ -43,7 +43,7 @@
     }
 
     article pre {
-        @apply p-4 mb-2 bg-gray-100
+        @apply p-4 my-2 bg-gray-100
     }
 
     article code {

@@ -13,7 +13,8 @@
     "express": "^4.18.2",
     "lang-detector": "^1.0.6",
     "prismjs": "1.28.0",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "xss": "^1.0.14"
   },
   "repository": {
     "type": "git",

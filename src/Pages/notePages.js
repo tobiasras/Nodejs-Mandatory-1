@@ -1,11 +1,10 @@
-import { getAllFiles, getNotes } from '../MarkdownConverter/ReadNotes.js'
+import { getAllFiles, getNotes } from '../MarkdownConverter/fileHandler.js'
 import cleanLink from '../util/links.js'
 import { createPage } from '../TemplateEngine/CreatePage.js'
 import { createNoteAside } from '../TemplateEngine/notes/noteAside.js'
 import createNoteMain from '../TemplateEngine/notes/NoteMain.js'
 import { getNoteHtml } from '../MarkdownConverter/mdConverter.js'
 import fs from 'fs'
-import createNoteArticle from '../TemplateEngine/notes/noteArticle.js'
 
 export const createNotePages = (title) => {
   const aside = createNoteAside(getAllFiles('./public/notes', 0))
@@ -21,7 +20,6 @@ export const createNotePages = (title) => {
 
     // const goToText = `${note.dirName} / ${nameOfNote}`
     const noteHTML = getNoteHtml(note.path)
-
     const main = createNoteMain(aside, noteHTML, nameOfNote)
     const html = createPage(`${title} | ${note.name}`, main)
 

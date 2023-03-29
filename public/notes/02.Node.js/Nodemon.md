@@ -1,3 +1,4 @@
+# Nodemon
 
 Running a file with: 
 ```
@@ -8,12 +9,12 @@ Can be be very tedius if you're making fast changes or debugging. instead of run
 
 ## Nodemon.js
 To install:
-```
+``` shell
 npm install -g nodemon
 ```
 
 To run js files.
-```
+``` shell
 nodemon .\nameOfJsFile.js
 ```
 
