@@ -26,13 +26,15 @@ You can create scripts that can build the project. in this project i have 2 scri
 npm run scriptname
 ```
 
-**Start**
-i created this scritp so i only had to run to run the script isntead of typing nodemon "nodemon ./app.js". i dont have to type run beaucse start is defined in note as a 'lifecycle script'
+1. **Start**: 
+
+ i created this scritp so i only had to run to run the script isntead of typing nodemon "nodemon ./app.js". i dont have to type run beaucse start is defined in note as a 'lifecycle script'
 ```
 npm start
 ```
 
-**tailwind**
+2. **tailwind**:
+
 i use the styling framework called talwind. This framework checks my html classes for tailwind.css classes, and then builds a stylesheet only ussing the classes i chose to use. there for i need to compile tailwind when making changes in the html stylling classes. the script builds the css and then 'watches html' for changes.
 
 ``` json
